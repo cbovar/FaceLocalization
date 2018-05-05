@@ -1,0 +1,14 @@
+1) go to http://www.ifp.illinois.edu/~vuongle2/helen/
+2) download dataset
+
+This program expects the following structure:
+
+src
+	Dataset
+		annotation
+		helen_1
+		helen_2
+		helen_3
+		helen_4
+		helen_5
+		

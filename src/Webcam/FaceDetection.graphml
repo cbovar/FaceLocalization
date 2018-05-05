@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-16"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns">
+  <key
+    id="d0"
+    for="node"
+    attr.name="type"
+    attr.type="string" />
+  <key
+    id="d1"
+    for="node"
+    attr.name="root"
+    attr.type="string" />
+  <key
+    id="d2"
+    for="node"
+    attr.name="cost"
+    attr.type="string" />
+  <key
+    id="d3"
+    for="node"
+    attr.name="Convolution`1.Stride"
+    attr.type="string" />
+  <key
+    id="d4"
+    for="node"
+    attr.name="Convolution`1.Pad"
+    attr.type="string" />
+  <key
+    id="d5"
+    for="node"
+    attr.name="Convolution`1.FilterCount"
+    attr.type="string" />
+  <key
+    id="d6"
+    for="node"
+    attr.name="Convolution`1.Width"
+    attr.type="string" />
+  <key
+    id="d7"
+    for="node"
+    attr.name="Convolution`1.Height"
+    attr.type="string" />
+  <key
+    id="d8"
+    for="node"
+    attr.name="Reshape`1.dim0"
+    attr.type="string" />
+  <key
+    id="d9"
+    for="node"
+    attr.name="Reshape`1.dim1"
+    attr.type="string" />
+  <key
+    id="d10"
+    for="node"
+    attr.name="Reshape`1.dim2"
+    attr.type="string" />
+  <key
+    id="d11"
+    for="node"
+    attr.name="Reshape`1.dim3"
+    attr.type="string" />
+  <key
+    id="d12"
+    for="node"
+    attr.name="Pool`1.Width"
+    attr.type="string" />
+  <key
+    id="d13"
+    for="node"
+    attr.name="Pool`1.Height"
+    attr.type="string" />
+  <key
+    id="d14"
+    for="node"
+    attr.name="Pool`1.HorizontalStride"
+    attr.type="string" />
+  <key
+    id="d15"
+    for="node"
+    attr.name="Pool`1.VerticalStride"
+    attr.type="string" />
+  <key
+    id="d16"
+    for="node"
+    attr.name="Pool`1.HorizontalPad"
+    attr.type="string" />
+  <key
+    id="d17"
+    for="node"
+    attr.name="Pool`1.VerticalPad"
+    attr.type="string" />
+  <key
+    id="d18"
+    for="node"
+    attr.name="PlaceHolder`1.Name"
+    attr.type="string" />
+  <key
+    id="d19"
+    for="node"
+    attr.name="Variable`1.Name"
+    attr.type="string" />
+  <key
+    id="d20"
+    for="node"
+    attr.name="Variable`1.IsLearnable"
+    attr.type="string" />
+  <graph
+    id="G"
+    edgedefault="directed">
+    <data
+      key="d1">n0</data>
+    <node
+      id="n0">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d3">1</data>
+      <data
+        key="d4">0</data>
+      <data
+        key="d5">4</data>
+      <data
+        key="d6">1</data>
+      <data
+        key="d7">1</data>
+    </node>
+    <node
+      id="n1">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Reshape`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d8">1</data>
+      <data
+        key="d9">1</data>
+      <data
+        key="d10">-1</data>
+      <data
+        key="d11">-2</data>
+    </node>
+    <node
+      id="n2">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d12">2</data>
+      <data
+        key="d13">2</data>
+      <data
+        key="d14">1</data>
+      <data
+        key="d15">1</data>
+      <data
+        key="d16">0</data>
+      <data
+        key="d17">0</data>
+    </node>
+    <node
+      id="n3">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d3">1</data>
+      <data
+        key="d4">0</data>
+      <data
+        key="d5">4</data>
+      <data
+        key="d6">3</data>
+      <data
+        key="d7">3</data>
+    </node>
+    <node
+      id="n4">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.PlaceHolder`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d18">x</data>
+    </node>
+    <node
+      id="n5">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d19">Filter_3</data>
+      <data
+        key="d20">True</data>
+    </node>
+    <node
+      id="n6">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d19">Filter_7</data>
+      <data
+        key="d20">True</data>
+    </node>
+    <edge
+      source="n1"
+      target="n0" />
+    <edge
+      source="n6"
+      target="n0" />
+    <edge
+      source="n2"
+      target="n1" />
+    <edge
+      source="n3"
+      target="n2" />
+    <edge
+      source="n4"
+      target="n3" />
+    <edge
+      source="n5"
+      target="n3" />
+  </graph>
+</graphml>
