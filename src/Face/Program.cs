@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ConvNetSharp.Flow;
+using ConvNetSharp.Flow.Ops;
 using ConvNetSharp.Flow.Serialization;
 using ConvNetSharp.Flow.Training;
 using ConvNetSharp.Volume;
@@ -15,8 +16,8 @@ namespace Face
 {
     internal class Program
     {
-        public const int IMAGE_WIDTH = 64;
-        public const int IMAGE_HEIGHT = 64;
+        public const int IMAGE_WIDTH = 256;
+        public const int IMAGE_HEIGHT = 256;
 
         private static DataSet LoadHelenDataset(string datasetPath, int n = -1)
         {
@@ -82,7 +83,7 @@ namespace Face
                 var data = new float[IMAGE_WIDTH * IMAGE_HEIGHT];
 
                 // Load image
-                var image = (Bitmap) Image.FromFile(filename);
+                var image = (Bitmap)Image.FromFile(filename);
                 var originalWidth = image.Width;
                 var originalHeight = image.Height;
 
@@ -95,7 +96,7 @@ namespace Face
                 boundingBox.x2 = boundingBox.x2 / originalWidth;
                 boundingBox.y2 = boundingBox.y2 / originalHeight;
 
-                result.TrainSet.Add(new HelenEntry {ImageData = data, BoundingBox = boundingBox, Filename = filename});
+                result.TrainSet.Add(new HelenEntry { ImageData = data, BoundingBox = boundingBox, Filename = filename });
             });
 
             return result;
@@ -106,18 +107,40 @@ namespace Face
             BuilderInstance<float>.Volume = new VolumeBuilder();
 
             var datasetPath = @"C:\Pro\Github\FaceLocalisation\Face\Dataset"; // contains folders from helen dataset (annotation, helen_1 ,..)
-            var batchSize = 128;
+            var batchSize = 11; // my GTX 760 cannot take more...
             var dataSet = LoadHelenDataset(datasetPath);
 
-            var cns = new ConvNetSharp<float>();
+            ConvNetSharp<float> cns;
 
             // Model
+            Op<float> yhat = null;
+            if (File.Exists("FaceDetection.json"))
+            {
+                Console.WriteLine("Loading model from disk...");
+                yhat = SerializationExtensions.Load<float>("FaceDetection", false)[0]; // first element is the model (second element is the cost if it was saved along)
+                cns = yhat.Graph; // Deserialization creates its own graph that we have to use. TODO: make it simplier in ConvNetSharp
+            }
+            else
+            {
+                cns = new ConvNetSharp<float>();
+            }
+
             var x = cns.PlaceHolder("x");
-            var layer1 = cns.Pool(cns.Conv(x, 3, 3, 4), 2, 2, 0, 0, 1, 1);
-            var layer2 = cns.Pool(cns.Conv(layer1, 3, 3, 4), 2, 2, 0, 0, 1, 1);
-            //var layer3 = cns.Pool(cns.Conv(layer2, 3, 3, 4), 2, 2, 0, 0, 1, 1);
-            var flat = cns.Flatten(layer2);
-            var yhat = cns.Conv(flat, 1, 1, 4);
+
+            if (yhat == null)
+            {
+                // Inspired by http://cs231n.stanford.edu/reports/2017/pdfs/222.pdf
+                var layer1 = cns.Pool(cns.Relu(cns.Conv(x, 3, 3, 32, 1, 1)), 2, 2, 0, 0, 2, 2);
+                var layer2 = cns.Pool(cns.Relu(cns.Conv(layer1, 3, 3, 64, 1, 1)), 2, 2, 0, 0, 2, 2);
+                var layer3 = cns.Pool(cns.Relu(cns.Conv(layer2, 3, 3, 64, 1, 1)), 2, 2, 0, 0, 2, 2);
+                var layer4 = cns.Pool(cns.Relu(cns.Conv(layer3, 3, 3, 64, 1, 1)), 2, 2, 0, 0, 2, 2);
+                var layer5 = cns.Pool(cns.Relu(cns.Conv(layer4, 3, 3, 16, 1, 1)), 2, 2, 0, 0, 2, 2);
+                var flatten = cns.Flatten(layer5);
+                var dense1 = cns.Conv(flatten, 1, 1, 128);
+                yhat = cns.Conv(dense1, 1, 1, 4);
+            }
+
+            //yhat.Evaluated += (sender, args) => { }; // I use this to place a break point and check Volume dimensions / debug
 
             var y = cns.PlaceHolder("y");
 
@@ -144,23 +167,23 @@ namespace Face
                     var input = batch.Item1;
                     var output = batch.Item2;
 
-                    var dico = new Dictionary<string, Volume<float>> {{"x", input}, {"y", output}};
+                    var dico = new Dictionary<string, Volume<float>> { { "x", input }, { "y", output } };
 
                     currentCost = session.Run(cost, dico);
                     Console.WriteLine($"cost: {currentCost}");
-                    File.AppendAllLines("loss.csv", new[] {currentCost.ToString(CultureInfo.InvariantCulture)});
+                    File.AppendAllLines("loss.csv", new[] { currentCost.ToString(CultureInfo.InvariantCulture) });
 
                     session.Run(optimizer, dico);
 
                     if (iteration++ % 100 == 0)
                     {
-                        // Test on a on picture
+                        // Test on a on random picture
                         var test = dataSet.GetBatch(1);
-                        dico = new Dictionary<string, Volume<float>> {{"x", test.Item1}};
+                        dico = new Dictionary<string, Volume<float>> { { "x", test.Item1 } };
                         var result = session.Run(yhat, dico);
 
-                        var image = (Bitmap) Image.FromFile(test.Item3[0].Filename);
-                        BitmapTool.DrawBoundingBox(image, new BoundingBox {x1 = result.Get(0), y1 = result.Get(1), x2 = result.Get(2), y2 = result.Get(3)}, Color.Blue);
+                        var image = (Bitmap)Image.FromFile(test.Item3[0].Filename);
+                        BitmapTool.DrawBoundingBox(image, new BoundingBox { x1 = result.Get(0), y1 = result.Get(1), x2 = result.Get(2), y2 = result.Get(3) }, Color.Blue);
                         BitmapTool.DrawBoundingBox(image, test.Item3[0].BoundingBox, Color.Green); // correct answer
                         image.Save($"iteration_{iteration}.jpg");
 
