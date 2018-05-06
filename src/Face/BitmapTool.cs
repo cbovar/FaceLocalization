@@ -73,7 +73,7 @@ namespace Face
 
         public static void DrawBoundingBox(Bitmap image, BoundingBox boundingBox, Color color)
         {
-            var pen = new Pen(color, 2);
+            var pen = new Pen(color, 3);
 
             using (var g = Graphics.FromImage(image))
             {
