@@ -18,82 +18,82 @@
   <key
     id="d3"
     for="node"
-    attr.name="Convolution`1.Stride"
+    attr.name="Dense`1.Stride"
     attr.type="string" />
   <key
     id="d4"
     for="node"
-    attr.name="Convolution`1.Pad"
+    attr.name="Dense`1.Pad"
     attr.type="string" />
   <key
     id="d5"
     for="node"
-    attr.name="Convolution`1.FilterCount"
+    attr.name="Dense`1.FilterCount"
     attr.type="string" />
   <key
     id="d6"
     for="node"
-    attr.name="Convolution`1.Width"
+    attr.name="Dense`1.Width"
     attr.type="string" />
   <key
     id="d7"
     for="node"
-    attr.name="Convolution`1.Height"
+    attr.name="Dense`1.Height"
     attr.type="string" />
   <key
     id="d8"
     for="node"
-    attr.name="Reshape`1.dim0"
+    attr.name="Dropout`1.DropoutProbability"
     attr.type="string" />
   <key
     id="d9"
     for="node"
-    attr.name="Reshape`1.dim1"
+    attr.name="Activation`1.ActivationType"
     attr.type="string" />
   <key
     id="d10"
     for="node"
-    attr.name="Reshape`1.dim2"
+    attr.name="Reshape`1.dim0"
     attr.type="string" />
   <key
     id="d11"
     for="node"
-    attr.name="Reshape`1.dim3"
+    attr.name="Reshape`1.dim1"
     attr.type="string" />
   <key
     id="d12"
     for="node"
-    attr.name="Pool`1.Width"
+    attr.name="Reshape`1.dim2"
     attr.type="string" />
   <key
     id="d13"
     for="node"
-    attr.name="Pool`1.Height"
+    attr.name="Reshape`1.dim3"
     attr.type="string" />
   <key
     id="d14"
     for="node"
-    attr.name="Pool`1.HorizontalStride"
+    attr.name="Convolution`1.Stride"
     attr.type="string" />
   <key
     id="d15"
     for="node"
-    attr.name="Pool`1.VerticalStride"
+    attr.name="Convolution`1.Pad"
     attr.type="string" />
   <key
     id="d16"
     for="node"
-    attr.name="Pool`1.HorizontalPad"
+    attr.name="Convolution`1.FilterCount"
     attr.type="string" />
   <key
     id="d17"
     for="node"
-    attr.name="Pool`1.VerticalPad"
+    attr.name="Convolution`1.Width"
     attr.type="string" />
   <key
     id="d18"
     for="node"
-    attr.name="Activation`1.ActivationType"
+    attr.name="Convolution`1.Height"
     attr.type="string" />
   <key
     id="d19"
@@ -118,254 +118,178 @@
     <node
       id="n0">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d3">1</data>
-      <data
-        key="d4">0</data>
-      <data
-        key="d5">4</data>
-      <data
-        key="d6">1</data>
-      <data
-        key="d7">1</data>
+        key="d0">ConvNetSharp.Flow.Ops.Softmax`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
     </node>
     <node
       id="n1">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Add`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+    </node>
+    <node
+      id="n2">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Dense`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
         key="d3">1</data>
       <data
         key="d4">0</data>
       <data
-        key="d5">128</data>
+        key="d5">2</data>
       <data
         key="d6">1</data>
       <data
         key="d7">1</data>
     </node>
     <node
-      id="n2">
-      <data
-        key="d0">ConvNetSharp.Flow.Ops.Reshape`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d8">1</data>
-      <data
-        key="d9">1</data>
-      <data
-        key="d10">-1</data>
-      <data
-        key="d11">-2</data>
-    </node>
-    <node
       id="n3">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Dropout`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d12">2</data>
-      <data
-        key="d13">2</data>
-      <data
-        key="d14">2</data>
-      <data
-        key="d15">2</data>
-      <data
-        key="d16">0</data>
-      <data
-        key="d17">0</data>
+        key="d8">dropProb</data>
     </node>
     <node
       id="n4">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d18">Relu</data>
+        key="d0">ConvNetSharp.Flow.Ops.Add`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
     </node>
     <node
       id="n5">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d3">1</data>
-      <data
-        key="d4">1</data>
-      <data
-        key="d5">16</data>
-      <data
-        key="d6">3</data>
-      <data
-        key="d7">3</data>
+        key="d9">Relu</data>
     </node>
     <node
       id="n6">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Dense`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d12">2</data>
+        key="d3">1</data>
       <data
-        key="d13">2</data>
+        key="d4">0</data>
       <data
-        key="d14">2</data>
+        key="d5">600</data>
       <data
-        key="d15">2</data>
+        key="d6">1</data>
       <data
-        key="d16">0</data>
-      <data
-        key="d17">0</data>
+        key="d7">1</data>
     </node>
     <node
       id="n7">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Reshape`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d18">Relu</data>
+        key="d10">1</data>
+      <data
+        key="d11">1</data>
+      <data
+        key="d12">-1</data>
+      <data
+        key="d13">-2</data>
     </node>
     <node
       id="n8">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d3">1</data>
-      <data
-        key="d4">1</data>
-      <data
-        key="d5">64</data>
-      <data
-        key="d6">3</data>
-      <data
-        key="d7">3</data>
+        key="d9">Relu</data>
     </node>
     <node
       id="n9">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d12">2</data>
-      <data
-        key="d13">2</data>
-      <data
-        key="d14">2</data>
-      <data
-        key="d15">2</data>
-      <data
-        key="d16">0</data>
-      <data
-        key="d17">0</data>
+        key="d0">ConvNetSharp.Flow.Ops.Add`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
     </node>
     <node
       id="n10">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d18">Relu</data>
+        key="d14">1</data>
+      <data
+        key="d15">0</data>
+      <data
+        key="d16">32</data>
+      <data
+        key="d17">3</data>
+      <data
+        key="d18">3</data>
     </node>
     <node
       id="n11">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d3">1</data>
-      <data
-        key="d4">1</data>
-      <data
-        key="d5">64</data>
-      <data
-        key="d6">3</data>
-      <data
-        key="d7">3</data>
+        key="d9">Relu</data>
     </node>
     <node
       id="n12">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d12">2</data>
-      <data
-        key="d13">2</data>
-      <data
-        key="d14">2</data>
-      <data
-        key="d15">2</data>
-      <data
-        key="d16">0</data>
-      <data
-        key="d17">0</data>
+        key="d0">ConvNetSharp.Flow.Ops.Add`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
     </node>
     <node
       id="n13">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d18">Relu</data>
+        key="d14">2</data>
+      <data
+        key="d15">0</data>
+      <data
+        key="d16">16</data>
+      <data
+        key="d17">3</data>
+      <data
+        key="d18">3</data>
     </node>
     <node
       id="n14">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d3">1</data>
-      <data
-        key="d4">1</data>
-      <data
-        key="d5">64</data>
-      <data
-        key="d6">3</data>
-      <data
-        key="d7">3</data>
+        key="d9">Relu</data>
     </node>
     <node
       id="n15">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Pool`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d12">2</data>
-      <data
-        key="d13">2</data>
-      <data
-        key="d14">2</data>
-      <data
-        key="d15">2</data>
-      <data
-        key="d16">0</data>
-      <data
-        key="d17">0</data>
+        key="d0">ConvNetSharp.Flow.Ops.Add`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
     </node>
     <node
       id="n16">
       <data
-        key="d0">ConvNetSharp.Flow.Ops.Activation`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d18">Relu</data>
+        key="d14">2</data>
+      <data
+        key="d15">0</data>
+      <data
+        key="d16">4</data>
+      <data
+        key="d17">5</data>
+      <data
+        key="d18">5</data>
     </node>
     <node
       id="n17">
-      <data
-        key="d0">ConvNetSharp.Flow.Ops.Convolution`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
-      <data
-        key="d3">1</data>
-      <data
-        key="d4">1</data>
-      <data
-        key="d5">32</data>
-      <data
-        key="d6">3</data>
-      <data
-        key="d7">3</data>
-    </node>
-    <node
-      id="n18">
       <data
         key="d0">ConvNetSharp.Flow.Ops.PlaceHolder`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
         key="d19">x</data>
     </node>
     <node
+      id="n18">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d20">Filter_4</data>
+      <data
+        key="d21">True</data>
+    </node>
+    <node
       id="n19">
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_3</data>
+        key="d20">bias1</data>
       <data
         key="d21">True</data>
     </node>
@@ -374,7 +298,7 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_7</data>
+        key="d20">Filter_9</data>
       <data
         key="d21">True</data>
     </node>
@@ -383,7 +307,7 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_11</data>
+        key="d20">bias2</data>
       <data
         key="d21">True</data>
     </node>
@@ -392,7 +316,7 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_15</data>
+        key="d20">Filter_14</data>
       <data
         key="d21">True</data>
     </node>
@@ -401,7 +325,7 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_19</data>
+        key="d20">bias3</data>
       <data
         key="d21">True</data>
     </node>
@@ -410,7 +334,7 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
-        key="d20">Filter_24</data>
+        key="d20">Filter_20</data>
       <data
         key="d21">True</data>
     </node>
@@ -419,7 +343,32 @@
       <data
         key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
       <data
+        key="d20">bias4</data>
+      <data
+        key="d21">True</data>
+    </node>
+    <node
+      id="n26">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.PlaceHolder`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d19">dropProb</data>
+    </node>
+    <node
+      id="n27">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
         key="d20">Filter_26</data>
+      <data
+        key="d21">True</data>
+    </node>
+    <node
+      id="n28">
+      <data
+        key="d0">ConvNetSharp.Flow.Ops.Variable`1[[System.Single, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</data>
+      <data
+        key="d20">bias5</data>
       <data
         key="d21">True</data>
     </node>
@@ -427,31 +376,37 @@
       source="n1"
       target="n0" />
     <edge
-      source="n25"
-      target="n0" />
-    <edge
       source="n2"
       target="n1" />
     <edge
-      source="n24"
+      source="n28"
       target="n1" />
     <edge
       source="n3"
       target="n2" />
     <edge
+      source="n27"
+      target="n2" />
+    <edge
       source="n4"
+      target="n3" />
+    <edge
+      source="n26"
       target="n3" />
     <edge
       source="n5"
       target="n4" />
     <edge
+      source="n25"
+      target="n4" />
+    <edge
       source="n6"
       target="n5" />
     <edge
-      source="n23"
-      target="n5" />
-    <edge
       source="n7"
+      target="n6" />
+    <edge
+      source="n24"
       target="n6" />
     <edge
       source="n8"
@@ -460,43 +415,46 @@
       source="n9"
       target="n8" />
     <edge
-      source="n22"
-      target="n8" />
-    <edge
       source="n10"
+      target="n9" />
+    <edge
+      source="n23"
       target="n9" />
     <edge
       source="n11"
       target="n10" />
     <edge
-      source="n12"
-      target="n11" />
+      source="n22"
+      target="n10" />
     <edge
-      source="n21"
+      source="n12"
       target="n11" />
     <edge
       source="n13"
       target="n12" />
     <edge
+      source="n21"
+      target="n12" />
+    <edge
       source="n14"
+      target="n13" />
+    <edge
+      source="n20"
       target="n13" />
     <edge
       source="n15"
       target="n14" />
     <edge
-      source="n20"
-      target="n14" />
-    <edge
       source="n16"
+      target="n15" />
+    <edge
+      source="n19"
       target="n15" />
     <edge
       source="n17"
       target="n16" />
     <edge
       source="n18"
-      target="n17" />
-    <edge
-      source="n19"
-      target="n17" />
+      target="n16" />
   </graph>
 </graphml>

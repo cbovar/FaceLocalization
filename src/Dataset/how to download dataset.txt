@@ -1,3 +1,6 @@
+Helen
+-----
+
 1) go to http://www.ifp.illinois.edu/~vuongle2/helen/
 2) download dataset
 
@@ -5,10 +8,61 @@ This program expects the following structure:
 
 src
 	Dataset
-		annotation
-		helen_1
-		helen_2
-		helen_3
-		helen_4
-		helen_5
+		Helen
+			annotation
+			helen_1
+			helen_2
+			helen_3
+			helen_4
+			helen_5
+
+Cropped labelled faces in the wild
+----------------------------------
+1) http://conradsanderson.id.au/lfwcrop/
+2) download grayscale version
+
+src
+	Dataset
+		lfwcrop_grey
+			faces
+			list
+			
+scene_categories
+----------------
+
+1) http://www-cvr.ai.uiuc.edu/ponce_grp/data/
+2) download Fifteen Scene Categories dataset
+
+src
+	Dataset
+		scene_categories
 		
+
+TextureDatabase
+----------------
+
+1) http://www-cvr.ai.uiuc.edu/ponce_grp/data/
+2) download TextureDatabase dataset (5 zips)
+3) unzip all 5 zips in src/Dataset/TextureDatabase
+
+src
+	Dataset
+		TextureDatabase
+		
+
+Caltech cars (Rear) background dataset
+--------------------------------------
+1) http://www.robots.ox.ac.uk/~vgg/data3.html
+
+src
+	Dataset
+		cars_brad_bg
+
+Caltech houses dataset 
+----------------------
+1) http://www.robots.ox.ac.uk/~vgg/data3.html
+src
+	Dataset
+		houses
+
+

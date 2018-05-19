@@ -1,12 +1,15 @@
 # FaceLocalization
-Face Localization using ConvNetSharp
-
-## Training
- Training phase dumps a random example displaying ground truth (green) and estimated (blue) bounding boxes:
-
-![Example 1](https://github.com/cbovar/FaceLocalization/blob/master/img/iteration_401.jpg)
-![Example 2](https://github.com/cbovar/FaceLocalization/blob/master/img/iteration_301.jpg)
+Face detection using ConvNetSharp
 
 
-## Using images from webcam 
-![Webcam](https://github.com/cbovar/FaceLocalization/blob/master/img/Webcam.PNG)
+WORK IN PROGRESS
+
+## Face project
+Face detection (face / no face).
+Download datasets first following [this](https://github.com/cbovar/FaceLocalization/blob/master/src/Dataset/how to download dataset.txt)
+ 
+## Photo 
+Choose a photo and the network will try to draw bounding boxes around faces
+
+## Webcam
+Display bounding boxes live
