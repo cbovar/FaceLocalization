@@ -13,3 +13,8 @@ Choose a photo and the network will try to draw bounding boxes around faces
 
 ## Webcam
 Display bounding boxes live
+
+
+The provided network in Photo and Webcam project was trained for ~3 days with Adam optimizer (1e-4f, 0.9f, 0.999f, 1e-16f).
+Loss ~ 0.06543
+Accuracy ~ 97.65%
