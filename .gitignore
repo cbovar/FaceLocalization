@@ -205,3 +205,4 @@ FakesAssemblies/
 *.opt
 *.idx3-ubyte
 *.idx1-ubyte
+/src/Dataset/
