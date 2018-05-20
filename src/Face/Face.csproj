@@ -80,7 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tools\Class1.cs" />
+    <Compile Include="Tools\NonMaximumSuppresion.cs" />
     <Compile Include="Tools\Dataset\FaceLocalizationDataset.cs" />
     <Compile Include="Tools\Dataset\FaceDetectionDataset.cs" />
     <Compile Include="Tools\BitmapTool.cs" />
