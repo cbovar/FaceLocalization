@@ -77,7 +77,6 @@ namespace Face.Tools
             var imageBytes = new byte[Math.Abs(imageData.Stride) * image.Height];
             var scan0 = imageData.Scan0;
 
-            var i = 0;
             for (var y = 0; y < height; y++)
             {
                 for (var x = 0; x < width; x++)
