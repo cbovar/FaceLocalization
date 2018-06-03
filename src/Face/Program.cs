@@ -29,22 +29,28 @@ namespace Face
 
             BuilderInstance<float>.Volume = new VolumeBuilder(); // For GPU
 
+            var imageLoader = new ImageLoader();
+            var randomImageLoader = new ImageLoader(true, 2);
+
             // Load Dataset - Faces
-            var faces = LfwCropLoader.LoadDataset(@"..\..\..\Dataset\lfwcrop_grey", width, height);
+            var faces1 = LfwCropLoader.LoadDataset(@"..\..\..\Dataset\lfwcrop_grey", width, height);
+            var faces2 = imageLoader.LoadDataset(@"..\..\..\Dataset\custom\faces", width, height); // dump you own face images here
 
             // Load Dataset - Non-faces
-            var imageLoader = new ImageLoader(true, 2);
-            var nonFaces1 = imageLoader.LoadDataset(@"..\..\..\Dataset\scene_categories", width, height);
-            var nonFaces2 = imageLoader.LoadDataset(@"..\..\..\Dataset\TextureDatabase", width, height);
-            var nonFaces3 = imageLoader.LoadDataset(@"..\..\..\Dataset\cars_brad_bg", width, height);
-            var nonFaces4 = imageLoader.LoadDataset(@"..\..\..\Dataset\houses", width, height);
+            var nonFaces1 = randomImageLoader.LoadDataset(@"..\..\..\Dataset\scene_categories", width, height);
+            var nonFaces2 = randomImageLoader.LoadDataset(@"..\..\..\Dataset\TextureDatabase", width, height);
+            var nonFaces3 = randomImageLoader.LoadDataset(@"..\..\..\Dataset\cars_brad_bg", width, height);
+            var nonFaces4 = randomImageLoader.LoadDataset(@"..\..\..\Dataset\houses", width, height);
+            var nonFaces5 = imageLoader.LoadDataset(@"..\..\..\Dataset\custom\non_faces", width, height); // dump you own non-face images here
 
             var facesDataset = new FaceDetectionDataset(width, height);
-            facesDataset.TrainSet.AddRange(faces);
+            facesDataset.TrainSet.AddRange(faces1);
+            facesDataset.TrainSet.AddRange(faces2);
             facesDataset.TrainSet.AddRange(nonFaces1);
             facesDataset.TrainSet.AddRange(nonFaces2);
             facesDataset.TrainSet.AddRange(nonFaces3);
             facesDataset.TrainSet.AddRange(nonFaces4);
+            facesDataset.TrainSet.AddRange(nonFaces5);
 
             Console.WriteLine(" Done.");
             ConvNetSharp<float> cns;
