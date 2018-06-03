@@ -9,5 +9,7 @@
         // bottom right corner
         public float x2 { get; set; } = float.MinValue;
         public float y2 { get; set; } = float.MinValue;
+
+        public float Confidence { get; set; }
     }
 }
